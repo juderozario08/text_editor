@@ -1,2 +1,5 @@
-kilo: kilo.c
-	$(CC) kilo.c -o kilo -Wall -Wextra -pedantic -std=c99
+CC = gcc
+
+all:
+	gcc -o server server.c -lwayland-server
+	gcc -o client client.c -lwayland-client
