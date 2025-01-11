@@ -1,5 +1,6 @@
 CC = gcc
 
 all:
-	gcc -o server server.c -lwayland-server
-	gcc -o client client.c -lwayland-client
+	gcc client.c -o client -lwayland-client
+	chmod u+x client
+	./client

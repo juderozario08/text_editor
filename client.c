@@ -1,31 +1,38 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <wayland-client.h>
+#include <wayland-client-core.h>
+#include <wayland-client-protocol.h>
 
-#define DISPLAY_COULD_NOT_CONNECT_NUMBER -1
+void wl_surface_enter(void *data, struct wl_surface *wl_surface,
+                      struct wl_output *output) {}
+void wl_surface_leave(void *data, struct wl_surface *wl_surface,
+                      struct wl_output *output) {}
 
-void reg_glob(void *data, struct wl_registry *reg, uint32_t name,
-              const char *interface, uint32_t version) {
-  if (!strcmp(interface, wl_compositor_interface.name)) {
-  }
-}
+void wl_surface_buffer_scale(void *data, struct wl_surface *wl_surface,
+                             int32_t factor) {}
 
-void reg_glob_remove(void *data, struct wl_registry *reg, uint32_t name) {}
+void wl_surface_buffer_transform(void *data, struct wl_surface *wl_surface,
+                                 uint32_t transform) {}
 
-struct wl_registry_listener registry_listener = {
-    .global = reg_glob, .global_remove = reg_glob_remove};
+struct wl_surface *surface;
+struct wl_display *display;
+struct wl_registry *registry;
 
 int main() {
-  struct wl_display *display = wl_display_connect(0);
+  display = wl_display_connect(NULL);
   if (!display) {
-    fprintf(stderr, "Failed to connect to display!\n");
-    exit(DISPLAY_COULD_NOT_CONNECT_NUMBER);
+    fprintf(stderr, "Could not connect to display\n");
+    return -1;
   }
-  struct wl_registry *registry = wl_display_get_registry(display);
-  wl_registry_add_listener(registry, &registry_listener, 0);
-  wl_display_roundtrip(display);
-
+  int fd = wl_display_get_fd(display);
+  registry = wl_display_get_registry(display);
+  fprintf(stderr, "Connected to display. fd: %d\n", fd);
+  while (wl_display_dispatch(display) != -1) {
+  }
   wl_display_disconnect(display);
+  static const struct wl_surface_listener surface_listener = {
+      .enter = wl_surface_enter,
+      .leave = wl_surface_leave,
+      .preferred_buffer_scale = wl_surface_buffer_scale,
+      .preferred_buffer_transform = wl_surface_buffer_transform};
   return 0;
 }
