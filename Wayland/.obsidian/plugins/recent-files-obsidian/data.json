@@ -1,6 +1,22 @@
 {
   "recentFiles": [
     {
+      "basename": "Globals and Registry",
+      "path": "Globals and Registry.md"
+    },
+    {
+      "basename": "Wayland Display",
+      "path": "Wayland Display.md"
+    },
+    {
+      "basename": "Protocol Design",
+      "path": "Protocol Design.md"
+    },
+    {
+      "basename": "Libwayland In Depth",
+      "path": "Libwayland In Depth.md"
+    },
+    {
       "basename": "Protocol Design",
       "path": "Protocol Design.md"
     },

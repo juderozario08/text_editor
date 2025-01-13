@@ -104,6 +104,26 @@ int wl_display_add_socket_fd(struct wl_display *display, int sock_fd);
 - after adding sockets, calling `wl_display_run` will run libwayland's internal event loop and block until `wl_display_terminate` is called
 
 ## Incorporating Event Loop
-## Server
+### Server
+- `wl_display` has a corresponding `wl_event_loop` which can be obtained with `wl_display_get_event_loop`.
+- for Wayland compositors, this is likely the only event loop
+- add file descriptor using `wl_event_loop_add_fd`
+- add timers with `wl_event_loop_add_timer`
+- handles signals with `wl_event_loop_add_signal`
+- server can now monitor all events the compositor has to respond to
+- all events can be processed by calling `wl_display_run` which will process and block until the display terminates (`wl_display_terminate`)
+- `wl_display` uses event loop to process clients internally and can choose to monitor the Wayland event loop by making a custom one.
+- `wl_event_loop_get_fd` to obtain *poll-able* file descriptor, then call `wl_event_loop_dispatch` to process events when activity occurs on that file descriptor
+- `wl_display_flush_clients` also needed to write data to clients
 
-
+### Client
+- does not have its own event loop
+- for wayland events, the following loop should be used
+```c
+while (wl_display_dispatch(display) != -1) {
+    // Left blank
+}
+```
+- we can also build our own event loop and obtain the Wayland display's file descriptor with `wl_display_get_fd`
+- Unpon `POLLIN` events, call `wl_display_dispatch` to process incoming events
+- to flush outgoing requests, call `wl_display_flush`

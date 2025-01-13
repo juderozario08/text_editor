@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Protocol Design.md",
+                "file": "Globals and Registry.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Protocol Design"
+              "title": "Globals and Registry"
             }
           }
         ]
@@ -82,8 +82,8 @@
             "state": {
               "type": "recent-files",
               "state": {},
-              "icon": "clock",
-              "title": "Recent Files"
+              "icon": "lucide-file",
+              "title": "Plugin no longer active"
             }
           },
           {
@@ -98,6 +98,26 @@
           },
           {
             "id": "f0186e5a3b6e6344",
+            "type": "leaf",
+            "state": {
+              "type": "recent-files",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "Plugin no longer active"
+            }
+          },
+          {
+            "id": "407155935a08e356",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          },
+          {
+            "id": "8c6cd3e3e1aeb146",
             "type": "leaf",
             "state": {
               "type": "recent-files",
@@ -245,12 +265,22 @@
             "state": {
               "type": "todo",
               "state": {},
+              "icon": "lucide-file",
+              "title": "Plugin no longer active"
+            }
+          },
+          {
+            "id": "17f326643fdb3b34",
+            "type": "leaf",
+            "state": {
+              "type": "todo",
+              "state": {},
               "icon": "checkmark",
               "title": "Todo List"
             }
           }
         ],
-        "currentTab": 10
+        "currentTab": 11
       }
     ],
     "direction": "horizontal",
@@ -274,8 +304,12 @@
       "notion-like-tables:Create loom": false
     }
   },
-  "active": "7e360b2e3cc6a089",
+  "active": "2c5af9381cfabe2e",
   "lastOpenFiles": [
+    "Wayland Display.md",
+    "Protocol Design.md",
+    "Libwayland In Depth.md",
+    "Globals and Registry.md",
     "Year 2.md",
     "Wayland/Protocol Design.md",
     "Wayland",
@@ -318,10 +352,6 @@
     "CPS 209/Class Methods.md",
     "CPS 209/Java Crash Course.md",
     "CPS 209/Data Structures.md",
-    "CPS 209/Class, Inheritance and Abstraction.md",
-    "CPS 305.md",
-    "Untitled 1.md",
-    "Untitled.md",
     "Untitled.canvas",
     "Untitled 1.canvas"
   ]
