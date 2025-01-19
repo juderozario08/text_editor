@@ -16,10 +16,10 @@ void wl_surface_buffer_transform(void *data, struct wl_surface *surface,
                                  uint32_t transform) {}
 
 static const struct wl_surface_listener surface_listener = {
-    .enter = wl_surface_enter,
-    .leave = wl_surface_leave,
-    .preferred_buffer_scale = wl_surface_buffer_scale,
-    .preferred_buffer_transform = wl_surface_buffer_transform};
+    .enter = wl_surface_enter, .leave = wl_surface_leave,
+    //     .preferred_buffer_scale = wl_surface_buffer_scale,
+    //     .preferred_buffer_transform = wl_surface_buffer_transform
+};
 
 /** wl_registry listener **/
 void registry_handle_global(void *data, struct wl_registry *registry,
@@ -48,7 +48,6 @@ int main() {
   registry = wl_display_get_registry(display);
 
   wl_registry_add_listener(registry, &registry_listener, NULL);
-  wl_surface_add_listener(surface, &surface_listener, NULL);
   wl_display_roundtrip(display);
 
   // Event handler for the client if needed
